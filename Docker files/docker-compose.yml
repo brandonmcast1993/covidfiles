@@ -1,0 +1,22 @@
+version: '3.3' 
+services:
+    sql-srv-01:
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=Pa$$$$w0rd
+            - MSSQL_PID=Express
+        container_name: SQL-SRV-01
+        ports:
+            - '1433:1433'
+        image: eu.gcr.io/assignment-276209/mssqlcovid
+        
+    data-download-script:
+        image: eu.gcr.io/assignment-276209/data_download
+        container_name: data_download
+        depends_on:
+            - sql-srv-01
+    web-page-script:
+        ports:
+            - '8080:5000'
+        image: eu.gcr.io/assignment-276209/web_page
+        container_name: web_page
