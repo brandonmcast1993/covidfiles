@@ -1,4 +1,4 @@
 # The file requirements.txt defines the image's dependenci
 
-Flask==1.0.2
+Flask==2.3.2
 pyodbc==4.0.30
